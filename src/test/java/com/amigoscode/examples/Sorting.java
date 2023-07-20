@@ -15,10 +15,7 @@ public class Sorting {
     @Test
     public void sortingSteamOfElements() throws IOException {
         List<Person> people = MockData.getPeople();
-        List<String> sorted = people.stream()
-                .map(Person::getFirstName)
-                .sorted()
-                .collect(Collectors.toList());
+        List<String> sorted = people.stream().map(Person::getFirstName).sorted().collect(Collectors.toList());
         sorted.forEach(System.out::println);
     }
 

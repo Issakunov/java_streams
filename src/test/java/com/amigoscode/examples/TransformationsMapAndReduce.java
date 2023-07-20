@@ -34,6 +34,14 @@ public class TransformationsMapAndReduce {
     }
 
     @Test
+    public void findAverageCarPrice() throws IOException {
+        List<Car> cars = MockData.getCars();
+        double avg = cars.stream().mapToDouble(Car::getPrice).average().orElse(0);
+        System.out.println(avg);
+
+    }
+
+    @Test
     void mapToDoubleAndFindAverageCarPrice() throws IOException {
         List<Car> cars = MockData.getCars();
         double avg = cars.stream()
@@ -45,11 +53,9 @@ public class TransformationsMapAndReduce {
 
     @Test
     public void reduce() {
-        int[] integers = {1, 2, 3, 4, 99, 100, 121, 1302, 199};
-        int sum = Arrays.stream(integers).reduce(0, Integer::sum);
-        int sub = Arrays.stream(integers).reduce(0, (a, b) -> a - b);
+        int[] integers = {1, 2, 3, 4, 100};
+        int sum = Arrays.stream(integers).reduce(0, (Integer::sum));
         System.out.println(sum);
-        System.out.println(sub);
     }
 }
 

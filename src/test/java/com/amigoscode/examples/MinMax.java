@@ -12,6 +12,8 @@ public class MinMax {
         List<Integer> numbers = List.of(1, 2, 3, 100, 23, 93, 99);
         Integer min = numbers.stream().min(Comparator.naturalOrder()).get();
         System.out.println(min);
+        Integer min2 = numbers.stream().max((n1, n2) -> n1.compareTo(n2)).get();
+        System.out.println(min2);
     }
 
     @Test

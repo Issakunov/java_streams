@@ -25,20 +25,26 @@ public class TransformationsWithFlatMap {
     @Test
     public void withoutFlatMap() throws Exception {
         // [Mariam, Alex, Ismail, John, Alesha, Andre, Susy, Ali]
-        List<String> names = new ArrayList<>();
-        for (List<String> strings : arrayListOfNames) {
-            names.addAll(strings);
+        List<String> nameList = new ArrayList<>();
+        for (List<String> arrayListOfName : arrayListOfNames) {
+            nameList.addAll(arrayListOfName);
         }
-        System.out.println(names);
+        System.out.println(nameList.size());
     }
 
     @Test
     public void withFlatMap() throws Exception {
         // [Mariam, Alex, Ismail, John, Alesha, Andre, Susy, Ali]
-        List<String> names = arrayListOfNames.stream()
-                .flatMap(List::stream)
-                .collect(Collectors.toList());
+        List<String> names = arrayListOfNames.stream().flatMap(List::stream).toList();
         System.out.println(names);
+        List<Optional<String>> optionals = List.of(
+                Optional.of("Atabek"),
+                Optional.of("Kubanychbek"),
+                Optional.of("21")
+
+        );
+        List<String> list = optionals.stream().flatMap(Optional::stream).collect(Collectors.toList());
+        System.out.println(list);
     }
 
     @Test

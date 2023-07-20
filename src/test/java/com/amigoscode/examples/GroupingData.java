@@ -39,12 +39,7 @@ public class GroupingData {
                 "Alex"
         );
 
-        Map<String, Long> map = names.stream()
-                .collect(Collectors.groupingBy(
-                        Function.identity(),
-                        Collectors.counting())
-                );
-
+        Map<String, Long> map = names.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         System.out.println(map);
 
     }

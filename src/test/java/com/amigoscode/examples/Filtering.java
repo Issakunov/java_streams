@@ -18,15 +18,8 @@ public class Filtering {
     public void filter() throws Exception {
         List<Car> cars = MockData.getCars();
 
-        Predicate<Car> carPredicate = car -> car.getPrice() < 20_000.00;
-        Predicate<Car> yellow = car -> car.getColor().equals("Yellow");
-
-        List<Car> carsLessThan20k = cars.stream()
-                .filter(carPredicate)
-                .filter(yellow)
-                .collect(Collectors.toList());
-
-        carsLessThan20k.forEach(System.out::println);
+        List<Car> filteredList = cars.stream().filter(c -> c.getPrice() < 20_000.00).filter(c -> c.getColor().equals("Yellow")).collect(Collectors.toList());
+        System.out.println(filteredList);
     }
 
     @Test

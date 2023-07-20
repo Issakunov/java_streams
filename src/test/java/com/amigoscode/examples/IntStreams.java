@@ -5,6 +5,7 @@ import com.amigoscode.beans.Person;
 import com.amigoscode.mockdata.MockData;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -22,6 +23,24 @@ public class IntStreams {
 
         System.out.println("with int stream inclusive");
         IntStream.rangeClosed(0, 10).forEach(System.out::println);
+    }
+
+    @Test
+    public void implementingStreams() {
+        System.out.println("Iterating int");
+        IntStream insStream = IntStream.rangeClosed(0, 10);
+        insStream.forEach(System.out::println);
+    }
+
+    @Test
+    public void iteratingObjectsWithRange() throws IOException {
+        List<Person> people = MockData.getPeople();
+        IntStream.rangeClosed(0, people.size()).forEach(System.out::println);
+    }
+
+    @Test
+    public void intStreamIteration() {
+        IntStream.iterate(0, v -> v + 1).limit(15).forEach(System.out::println);
     }
 
     // Loop through people using IntStream
